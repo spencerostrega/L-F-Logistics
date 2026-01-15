@@ -1,0 +1,504 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L&F Logistics LLC | Moving America Forward</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- GENERAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- 1. HEADER & NAVIGATION --- */
+        header {
+            background-color: #ffffff;
+            height: 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo img {
+            height: 75px; /* Sized for the header */
+            width: auto;
+            display: block;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: #333;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover, nav a.active {
+            color: #0CAADC; /* Sky Blue Accent */
+        }
+
+        /* --- 2. PAGE SECTIONS --- */
+        .page-content {
+            display: none; /* Hidden by default */
+            min-height: calc(100vh - 250px);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            height: 80vh;
+            background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(200, 210, 225, 0.75);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #1a1a1a;
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+
+        .btn-main {
+            background-color: #0CAADC;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn-main:hover {
+            background-color: #0989b2;
+            transform: translateY(-2px);
+        }
+
+        /* --- HOME SPECIFIC SECTIONS --- */
+        .feature-section {
+            padding: 80px 5%;
+            background-color: #fff;
+        }
+        
+        .feature-section.alt {
+            background-color: #f9f9f9;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title .underline {
+            width: 60px;
+            height: 4px;
+            background-color: #c91c1c;
+            margin: 15px auto 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            text-align: center;
+        }
+
+        .feature-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #0CAADC;
+            text-transform: uppercase;
+        }
+
+        /* --- GENERIC SECTION STYLING --- */
+        section.subpage-header {
+            background-color: #f4f7f9;
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .subpage-header h2 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+
+        .content-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 5%;
+        }
+
+        /* --- ABOUT US STYLES --- */
+        .about-flex {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .about-text { flex: 1; min-width: 300px; }
+        .about-image { flex: 1; min-width: 300px; }
+        .about-image img { width: 100%; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+
+        /* --- SERVICES STYLES --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            overflow: hidden;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        .card:hover { transform: translateY(-10px); }
+        .card-img { height: 200px; width: 100%; object-fit: cover; }
+        .card-content { padding: 30px; text-align: center; }
+        .card h3 { font-size: 1.4rem; text-transform: uppercase; margin-bottom: 15px; color: #1a1a1a; }
+        .card p { font-size: 0.95rem; color: #666; margin-bottom: 20px; }
+
+        /* --- CONTACT STYLES --- */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 { margin-bottom: 20px; text-transform: uppercase; color: #c91c1c; }
+        .contact-info p { margin-bottom: 15px; font-size: 1.1rem; }
+        
+        .contact-form {
+            background: #f9f9f9;
+            padding: 40px;
+            border-radius: 12px;
+        }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 50px;
+        }
+        
+        .footer-info {
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            header { flex-direction: column; height: auto; padding: 20px; }
+            nav ul { margin-top: 20px; flex-wrap: wrap; justify-content: center; gap: 15px; }
+            .contact-wrapper { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a onclick="showPage('home')">
+                <img src="FullLogo.jpg" alt="L&F Logistics LLC Official Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
+                <li><a onclick="showPage('about')" id="nav-about">About Us</a></li>
+                <li><a onclick="showPage('services')" id="nav-services">Services</a></li>
+                <li><a onclick="showPage('contact')" id="nav-contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HOME PAGE -->
+    <main id="page-home" class="page-content active">
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1>More than freight,<br>a partner you can trust.</h1>
+                <button class="btn-main" onclick="showPage('contact')">Request a Quote</button>
+            </div>
+        </section>
+
+        <!-- Intro Mission -->
+        <section class="content-container" style="text-align: center; padding-bottom: 20px;">
+            <h2 style="color: #c91c1c; text-transform: uppercase; margin-bottom: 20px;">Moving America Forward</h2>
+            <p style="font-size: 1.2rem; font-weight: 300; line-height: 1.8; max-width: 800px; margin: 0 auto;">
+                Founded in 2022, L&F Logistics was built out of a passion for trucking and a vision to create something bigger. 
+                With years of experience in driving and dispatching, we know the industry from the inside out. 
+                We are a family-owned business dedicated to moving your load with care and efficiency.
+            </p>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="feature-section alt">
+            <div class="section-title">
+                <h2>Why Choose L&F Logistics</h2>
+                <div class="underline"></div>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h4>Industry Expertise</h4>
+                    <p>Our team isn't just sitting behind desks; we've been behind the wheel. We understand the physical and logistical demands of the road.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Family Owned</h4>
+                    <p>We operate with a personal touch. When you partner with us, you're not a number—you're part of the L&F family.</p>
+                </div>
+                <div class="feature-item">
+                    <h4>Reliability First</h4>
+                    <p>With our roots in fleet ownership, we prioritize uptime and on-time deliveries through rigorous carrier vetting.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategic Advantage -->
+        <section class="feature-section">
+            <div class="about-flex" style="max-width: 1200px; margin: 0 auto;">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=2075&auto=format&fit=crop" alt="Logistics Center">
+                </div>
+                <div class="about-text">
+                    <h2 style="text-transform: uppercase; color: #1a1a1a; margin-bottom: 20px;">The L&F Advantage</h2>
+                    <p style="margin-bottom: 20px;">Based in the "Crossroads of America," our Indianapolis headquarters serves as a strategic hub for nationwide distribution. We leverage a vast network of vetted carriers to ensure your freight reaches its destination safely and on schedule.</p>
+                    <p style="margin-bottom: 20px;">By maintaining direct communication between shippers and drivers, we eliminate the traditional "brokerage black hole," providing real-time transparency for every mile of the journey.</p>
+                    <button class="btn-main" onclick="showPage('about')">Learn More About Us</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ABOUT US PAGE -->
+    <main id="page-about" class="page-content">
+        <section class="subpage-header">
+            <h2>Our Story</h2>
+            <p>Built on experience, driven by integrity.</p>
+        </section>
+        <section class="content-container">
+            <div class="about-flex">
+                <div class="about-text">
+                    <h3 style="margin-bottom: 20px; color: #0CAADC;">Who We Are</h3>
+                    <p style="margin-bottom: 15px;">L&F Logistics LLC is more than just a brokerage—we are industry veterans. Having owned and operated fleets like Reliable Hauling LLC, we understand the challenges drivers face and the urgency shippers require.</p>
+                    <p style="margin-bottom: 15px;">Our mission is to bridge the gap between shippers and carriers with absolute transparency. We believe in "Moving America Forward" by treating every load as if it were our own equipment carrying it.</p>
+                    <p>Based in Indianapolis, we serve all 48 states with a focus on reliability and long-term partnerships.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=2068&auto=format&fit=crop" alt="Trucking team">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- SERVICES PAGE -->
+    <main id="page-services" class="page-content">
+        <section class="subpage-header">
+            <h2>Our Services</h2>
+            <p>Comprehensive logistics solutions for every industry.</p>
+        </section>
+        <section class="content-container">
+            <div class="services-grid">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop" alt="Flatbed Truck" class="card-img">
+                    <div class="card-content">
+                        <h3>Full Truckload (FTL)</h3>
+                        <p>Reliable long-haul transportation for your largest shipments across the continental US.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?q=80&w=1974&auto=format&fit=crop" alt="Specialized Freight" class="card-img">
+                    <div class="card-content">
+                        <h3>Specialized Equipment</h3>
+                        <p>From Step Decks to Flatbeds and Hotshots, we have the right gear for unique loads.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?q=80&w=2070&auto=format&fit=crop" alt="High speed transit" class="card-img">
+                    <div class="card-content">
+                        <h3>Expedited Shipping</h3>
+                        <p>Time-critical freight that needs to move now. We provide constant updates and rapid transit.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- CONTACT PAGE -->
+    <main id="page-contact" class="page-content">
+        <section class="subpage-header">
+            <h2>Get In Touch</h2>
+            <p>Let's discuss how we can help your business grow.</p>
+        </section>
+        <section class="content-container">
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <p><strong>Phone:</strong> <br> 317-772-0209</p>
+                    <p><strong>Email:</strong> <br> dispatch@lflogisticsllc.com</p>
+                    <p><strong>Location:</strong> <br> Indianapolis, IN</p>
+                    <p style="margin-top: 30px; font-style: italic; color: #666;">Available 24/7 for our partners and drivers.</p>
+                </div>
+                <div class="contact-form">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="john@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>How can we help?</label>
+                        <textarea rows="5" placeholder="Tell us about your freight needs..."></textarea>
+                    </div>
+                    <button class="btn-main" style="width: 100%; border-radius: 8px;">Send Message</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-info">
+            <p><strong>L&F Logistics LLC</strong></p>
+            <p>Indianapolis, IN | 317-772-0209</p>
+            <p>Moving Freight. Building Trust. Delivering Results.</p>
+        </div>
+        <p style="font-size: 0.8rem; color: #888;">&copy; 2024 L&F Logistics LLC. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(page => page.classList.remove('active'));
+
+            // Deactivate all nav links
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => link.classList.remove('active'));
+
+            // Show target page
+            const targetPage = document.getElementById('page-' + pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                window.scrollTo(0, 0);
+            }
+
+            // Set active nav link
+            const activeLink = document.getElementById('nav-' + pageId);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
